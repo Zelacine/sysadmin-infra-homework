@@ -1,5 +1,5 @@
 ---
-web_app_env: test
+web_app_env: dev
 web_project_name: php-app-my
 web_project_root: "{{ playbook_dir | dirname }}"
 web_nginx_conf_host_path: "{{ web_project_root }}/terraform/nginx.conf"
