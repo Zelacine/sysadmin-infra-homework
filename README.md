@@ -1,4 +1,4 @@
-# Test: Nginx + PHP-FPM, Terraform, Ansible
+#  Nginx + PHP-FPM, Terraform, Ansible
 
 This repository is a **template** for completing the test assignment. Full description is in [INSTRUCTIONS.md](./INSTRUCTIONS.md).
 
