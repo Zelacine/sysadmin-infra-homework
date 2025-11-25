@@ -27,29 +27,31 @@ terraform apply -auto-approve
 
 ```
 cd /ansible
-
-     **Missing Docker modules**
+```
+**Missing Docker modules**
    - 'community.docker.docker_container_copy' and the other Docker modules come from the 'community.docker' collection. Install it once on your control machine:
-   
-     `ansible-galaxy collection install community.docker`
-    
-     Add a tiny inventory and point the playbook at it, e.g. create ansible/inventory containing:
+```bash   
+     ansible-galaxy collection install community.docker
+```    
+Add a tiny inventory and point the playbook at it, e.g. create ansible/inventory containing:
+```bash
      [local]
      localhost ansible_connection=local
-
+```
+```bash
      Then run 
      ansible-playbook -i inventory --syntax-check playbook.yml
-
+```
   
    
 (No sudo needed unless your Ansible is installed system wide.) If you prefer project-local collections, run that command inside the project and set `ANSIBLE_COLLECTIONS_PATHS` or add to `ansible.cfg`.
 
-After those two fixes, rerun:
-
+Run ansible-playbook:
+```bash
 ansible-playbook -i inventory --syntax-check playbook.yml
-
-and the syntax check should pass.
 ```
+and the syntax check should pass.
+
 
 ### Testing
 ```
@@ -60,7 +62,14 @@ curl http://localhost:8080/healthz
 
 ## CI/CD
 - **Actions** tab should be green: Terraform (fmt/validate/plan) and ansible-lint pass.
-- Attach screenshots or links to successful runs.
+- Attach screenshots or links to successful runs:
+
+Terraform
+https://github.com/Zelacine/sysadmin-infra-homework/actions/runs/19681930283/job/56377821675
+
+
+Ansible
+https://github.com/Zelacine/sysadmin-infra-homework/actions/runs/19681930324/job/56377822001
 
 ## Useful Links
 - Full task description: [INSTRUCTIONS.md](./INSTRUCTIONS.md)
