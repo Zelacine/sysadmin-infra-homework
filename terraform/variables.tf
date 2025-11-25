@@ -1,14 +1,18 @@
+# Variables
 variable "project_name" {
-  type    = string
-  default = "test_assignment"
+  description = "Project name for resource naming"
+  type        = string
+  default     = "php-app"
 }
 
 variable "host_port" {
-  type    = number
-  default = 8080
+  description = "Host port to expose Nginx"
+  type        = number
+  default     = 8080
 }
 
 variable "app_env" {
-  type    = string
-  default = "test"
+  description = "Application environment"
+  type        = string
+  default     = "dev"
 }
