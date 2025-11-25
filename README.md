@@ -73,4 +73,4 @@ https://github.com/Zelacine/sysadmin-infra-homework/actions/runs/19681930324/job
 
 ## Useful Links
 - Full task description: [INSTRUCTIONS.md](./INSTRUCTIONS.md)
-- Solution rationale: See Answer [Decisions.md] (./Decisions.md) 
+- Solution rationale: See Answer [Decisions.md](./Decisions.md) 
