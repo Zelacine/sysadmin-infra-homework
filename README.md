@@ -20,10 +20,12 @@ This repository is a **template** for completing the test assignment. Full descr
 # example
 cd terraform
 terraform init
+terraform fmt -check
+terraform plan 
 terraform apply -auto-approve
 
 cd ../ansible
-ansible-playbook -i inventory/containers.ini playbooks/site.yml
+ansible-playbook -i inventory playbooks.yml
 ```
 
 ### Testing
