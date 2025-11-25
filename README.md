@@ -15,21 +15,44 @@ This repository is a **template** for completing the test assignment. Full descr
 
 ---
 
-## Local Run (to be filled after completion)
-```bash
+## Local Run
+```
 # example
-cd terraform
+cd /terraform
 terraform init
 terraform fmt -check
 terraform plan 
 terraform apply -auto-approve
+```
 
-cd ../ansible
-ansible-playbook -i inventory playbooks.yml
+```
+cd /ansible
+
+     **Missing Docker modules**
+   - 'community.docker.docker_container_copy' and the other Docker modules come from the 'community.docker' collection. Install it once on your control machine:
+   
+     `ansible-galaxy collection install community.docker`
+    
+     Add a tiny inventory and point the playbook at it, e.g. create ansible/inventory containing:
+     [local]
+     localhost ansible_connection=local
+
+     Then run 
+     ansible-playbook -i inventory --syntax-check playbook.yml
+
+  
+   
+(No sudo needed unless your Ansible is installed system wide.) If you prefer project-local collections, run that command inside the project and set `ANSIBLE_COLLECTIONS_PATHS` or add to `ansible.cfg`.
+
+After those two fixes, rerun:
+
+ansible-playbook -i inventory --syntax-check playbook.yml
+
+and the syntax check should pass.
 ```
 
 ### Testing
-```bash
+```
 curl http://localhost:8080/healthz
 # expected JSON:
 # {"status":"ok","service":"nginx","env":"dev"}
