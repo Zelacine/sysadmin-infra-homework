@@ -64,19 +64,25 @@ Add a tiny inventory and point the playbook at it, e.g. create ansible/inventory
    [local]
    localhost ansible_connection=local
 ```
-Then run ansible playbook:
+Then run syntax check ansible playbook:
 ```bash
    ansible-playbook -i inventory --syntax-check playbook.yml
 ```
-  
+Validation ansible lint:
+```bash
+   ansible-lint playbook.yml
+# example out
+Passed: 0 failure(s), 0 warning(s) on 4 files. Last profile that met the validation criteria was 'production'.
+
+```  
    
 (No sudo needed unless your Ansible is installed system wide.) If you prefer project-local collections, run that command inside the project and set `ANSIBLE_COLLECTIONS_PATHS` or add to `ansible.cfg`.
 
 Run ansible-playbook:
 ```bash
-   ansible-playbook -i inventory --syntax-check playbook.yml
+   ansible-playbook -i inventory  playbook.yml
 ```
-and the syntax check should pass.
+
 
 
 ### Status Check
@@ -84,6 +90,12 @@ and the syntax check should pass.
 curl http://localhost:8080/healthz
 # expected JSON:
 # {"status":"ok","service":"nginx","env":"dev"}
+```
+### Staus Check php-fpm service
+```
+http://localhost:8080/healthz-php
+# expected JSON:
+# {"status":"ok","service":"php-fpm","env":"dev","php_version":"8.2.29","timestamp":"2025-11-25T08:29:30+00:00"}
 ```
 
 ## CI/CD
