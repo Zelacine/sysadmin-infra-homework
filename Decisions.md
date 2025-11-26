@@ -94,7 +94,8 @@ location /healthz {
 ## 5. Improvements given more time
 
 **1. Health checks:**
-- Add PHP-FPM health endpoint (`/healthz` via PHP-FPM or separate `/healthz-php`).
+- ~~Add PHP-FPM health endpoint (`/healthz` via PHP-FPM or separate `/healthz-php`).~~
+  Done added check it http://localhost:8080/healthz-php 
 - Implement health/liveness probes.
 - Add dependency checks (database, Redis, etc.).
 

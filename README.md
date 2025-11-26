@@ -1,4 +1,4 @@
-#  Nginx + PHP-FPM, Terraform, Ansible
+# Running Docker for Nginx + PHP-FPM, Terraform, Ansible on localhost
 
 This repository is a **template** for completing the test assignment. Full description is in [INSTRUCTIONS.md](./INSTRUCTIONS.md).
 
@@ -16,6 +16,18 @@ This repository is a **template** for completing the test assignment. Full descr
 ---
 
 ## Local Run
+
+Your change in ansible: roles/web/defaults/main.yml 
+should have the same name as in terraform.tvars
+example:
+```
+terraform: terraform.tfvars
+project_name = "php-app-my"
+ansible roles/web/defaults/main.yml 
+web_project_name: php-app-my
+```
+### Start terraform 
+
 ```
 # example
 cd /terraform
@@ -24,23 +36,24 @@ terraform fmt -check
 terraform plan 
 terraform apply -auto-approve
 ```
+### Start ansible
 
 ```
 cd /ansible
 ```
 **Missing Docker modules**
-   - 'community.docker.docker_container_copy' and the other Docker modules come from the 'community.docker' collection. Install it once on your control machine:
+ 'community.docker.docker_container_copy' and the other Docker modules come from the 'community.docker' collection. Install it once on your control machine:
 ```bash   
-     ansible-galaxy collection install community.docker
+   ansible-galaxy collection install community.docker
 ```    
 Add a tiny inventory and point the playbook at it, e.g. create ansible/inventory containing:
 ```bash
-     [local]
-     localhost ansible_connection=local
+   [local]
+   localhost ansible_connection=local
 ```
+Then run ansible playbook:
 ```bash
-     Then run 
-     ansible-playbook -i inventory --syntax-check playbook.yml
+   ansible-playbook -i inventory --syntax-check playbook.yml
 ```
   
    
@@ -48,12 +61,12 @@ Add a tiny inventory and point the playbook at it, e.g. create ansible/inventory
 
 Run ansible-playbook:
 ```bash
-ansible-playbook -i inventory --syntax-check playbook.yml
+   ansible-playbook -i inventory --syntax-check playbook.yml
 ```
 and the syntax check should pass.
 
 
-### Testing
+### Status Check
 ```
 curl http://localhost:8080/healthz
 # expected JSON:
@@ -67,9 +80,12 @@ curl http://localhost:8080/healthz
 Terraform
 https://github.com/Zelacine/sysadmin-infra-homework/actions/runs/19681930283/job/56377821675
 
+Screenshot Terraform actions: [Terraform](files/terraform-workflow.png)
 
 Ansible
 https://github.com/Zelacine/sysadmin-infra-homework/actions/runs/19681930324/job/56377822001
+
+Screenshot Ansible actions: [Ansible-lint](files/ansible-lint-workflows.png)
 
 ## Useful Links
 - Full task description: [INSTRUCTIONS.md](./INSTRUCTIONS.md)
