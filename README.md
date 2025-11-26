@@ -33,9 +33,22 @@ web_project_name: php-app-my
 cd /terraform
 terraform init
 terraform fmt -check
+terraform validate
 terraform plan 
 terraform apply -auto-approve
 ```
+#### Outputs:
+example:
+```
+app_url = "http://localhost:8080/"
+healthz_url = "http://localhost:8080/healthz"
+network_name = "php-app-my-network"
+nginx_container_name = "php-app-my-nginx"
+php_fpm_container_name = "php-app-my-php-fpm"
+volume_name = "php-app-my-volume"
+```
+
+
 ### Start ansible
 
 ```
