@@ -38,8 +38,8 @@ terraform plan
 terraform apply -auto-approve
 ```
 #### Outputs:
-example:
 ```
+# example
 app_url = "http://localhost:8080/"
 healthz_url = "http://localhost:8080/healthz"
 network_name = "php-app-my-network"
